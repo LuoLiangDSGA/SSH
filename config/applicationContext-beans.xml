@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id= "userDao" class="com.cuit.ssh.dao.UserDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+        
+    </bean>
+    
+     <bean id= "analysisDao" class="com.cuit.ssh.dao.AnalysisDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+        
+    </bean> 
+    
+    <bean id= "RoalDao" class="com.cuit.ssh.dao.RoalDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+        
+    </bean>
+     <bean id= "UserMangerDao" class="com.cuit.ssh.dao.UserMangerDao">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+        
+    </bean> 
+    <bean id="MarketManageDao" class="com.cuit.ssh.dao.MarketManageDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+    
+     
+     
+     
+    
+    <bean id="userService" class = "com.cuit.ssh.service.UserService">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="analysisService" class = "com.cuit.ssh.service.AnalysisService">
+        <property name="analysisDao" ref="analysisDao"></property>
+    </bean>
+    
+      <bean id="RoalService" class = "com.cuit.ssh.service.RoalService">
+        <property name="roalDao" ref="RoalDao"></property>
+    </bean>
+    
+      <bean id="UserMangerService" class = "com.cuit.ssh.service.UserMangerService">
+        <property name="userMangerDao" ref="UserMangerDao"></property>
+    </bean>
+    	<bean id="StockService" class="com.cuit.ssh.service.StockService">
+		<property name="marketDao" ref="MarketManageDao"></property>
+	</bean>
+    
+    
+    
+
+	<bean id="UserAction" class="com.cuit.ssh.actions.UserAction">
+	    <property name="userService" ref="userService"></property>	
+	</bean>
+	<bean id="AnalysisAction" class="com.cuit.ssh.actions.AnalysisAction">
+	      <property name="analysisService" ref="analysisService"></property>	
+	</bean>
+	
+   <bean id="RoalAction" class="com.cuit.ssh.actions.RoalAction">
+	     <property name="roalService" ref="RoalService"></property>
+	</bean>
+	
+	<bean id="UserMangerAction" class="com.cuit.ssh.actions.UserMangerAction">
+	     <property name="userMangerService" ref="UserMangerService"></property>
+	</bean>
+		<bean id="MarketManageAction" class="com.cuit.ssh.actions.MarketManageAction">
+		<property name="stockservice" ref="StockService"></property>
+	</bean>
+</beans>

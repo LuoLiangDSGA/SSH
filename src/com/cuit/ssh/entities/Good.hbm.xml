@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-7-22 11:21:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.cuit.ssh.entities.Good" table="SSH_GOOD">
+        
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+            <property name="introduce" type="java.lang.String">
+            <column name="INTRODUCE" />
+        </property>
+        
+        <property name="price" type="java.lang.Integer">
+            <column name="PRICE" />
+        </property>
+         <property name="number" type="java.lang.Integer">
+            <column name="NUMBER" />
+        </property>
+           <property name="remainnumber" type="java.lang.Integer">
+            <column name="REMAINNUMBER" />
+        </property>
+        
+        
+        <property name="createTime" type="java.util.Date" update="false">
+            <column name="CREATE_TIME" />
+        </property>
+          <property name="endtime" type="java.util.Date">
+            <column name="END_TIME" />
+        </property>
+        <property name="state" type="java.lang.String">
+			<column name="STATE" />
+		</property>
+            <!-- 映射单向 n-1 的关联关系 -->
+        <many-to-one name="goodtype" lazy="false" class="com.cuit.ssh.entities.GoodType">
+            <column name="GOODTYPE" />
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>

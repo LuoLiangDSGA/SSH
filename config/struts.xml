@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="10701096" />
+
+	<package name="globalResult" extends="struts-default,json-default"
+		abstract="true">
+
+		<interceptors>
+			<interceptor name="permission"
+				class="com.cuit.ssh.interceptor.PermissionInterceptor" />
+			<interceptor-stack name="permissionStack"><!-- 权限拦截器栈 -->
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="permission" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="permissionStack" />
+		<global-results>
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="login">login.jsp</result>
+		</global-results>
+	</package>
+
+	<package name="User" namespace="/" extends="globalResult">
+		<action name="UserLogin" class="UserAction" method="Login">
+			<interceptor-ref name="defaultStack" />
+			<result name="IndexSuccess">/views/index1.jsp</result>
+		</action>
+
+		<action name="User-*" class="UserAction" method="{1}">
+			<result name="IndexSuccess">/views/index1.jsp</result>
+		</action>
+
+		<action name="Analysis-*" class="AnalysisAction" method="{1}">
+			
+			
+		</action>
+		<action name="Roal-*" class="RoalAction" method="{1}">
+
+		</action>
+		<action name="UserManger-*" class="UserMangerAction" method="{1}">
+
+		</action>
+		
+       <action name="Market-*" class="MarketManageAction" method="{1}">
+
+		</action>
+	</package>
+
+</struts>
